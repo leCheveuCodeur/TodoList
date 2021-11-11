@@ -81,6 +81,9 @@
     "doctrine/reflection": {
         "version": "1.2.2"
     },
+    "doctrine/sql-formatter": {
+        "version": "1.2.x-dev"
+    },
     "egulias/email-validator": {
         "version": "3.1.2"
     },
@@ -104,6 +107,9 @@
     },
     "psr/container": {
         "version": "1.1.2"
+    },
+    "psr/event-dispatcher": {
+        "version": "1.0.x-dev"
     },
     "psr/log": {
         "version": "1.1.4"
@@ -274,6 +280,9 @@
     "symfony/options-resolver": {
         "version": "v4.4.30"
     },
+    "symfony/password-hasher": {
+        "version": "5.4.x-dev"
+    },
     "symfony/phpunit-bridge": {
         "version": "4.4",
         "recipe": {
@@ -297,6 +306,9 @@
     },
     "symfony/polyfill-iconv": {
         "version": "v1.23.0"
+    },
+    "symfony/polyfill-intl-grapheme": {
+        "version": "1.23-dev"
     },
     "symfony/polyfill-intl-icu": {
         "version": "v1.23.0"
@@ -324,6 +336,9 @@
     },
     "symfony/property-access": {
         "version": "v4.4.30"
+    },
+    "symfony/property-info": {
+        "version": "5.4.x-dev"
     },
     "symfony/proxy-manager-bridge": {
         "version": "v4.4.27"
@@ -371,6 +386,9 @@
     },
     "symfony/stopwatch": {
         "version": "v4.4.27"
+    },
+    "symfony/string": {
+        "version": "5.4.x-dev"
     },
     "symfony/swiftmailer-bundle": {
         "version": "3.5",
