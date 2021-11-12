@@ -7,7 +7,7 @@ use App\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserController extends AbstractController
 {
@@ -22,7 +22,7 @@ class UserController extends AbstractController
     /**
      * @Route("/users/create", name="user_create")
      */
-    public function createAction(Request $request, UserPasswordEncoderInterface $password)
+    public function createAction(Request $request, UserPasswordHasherInterface $password)
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -31,7 +31,7 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $password = $password->encodePassword($user, $user->getPassword());
+            $password = $password->hashPassword($user, $user->getPassword());
             $user->setPassword($password);
 
             $em->persist($user);
