@@ -19,20 +19,23 @@ class TaskController extends AbstractController
      */
     public function listAction(TaskRepository $taskRepository)
     {
-        return $this->render('task/list.html.twig', ['tasks' => $taskRepository->findAll()]);
+
+        return $this->render('task/list.html.twig', ['tasks' => $taskRepository->findBy(['author'=>$this->getUser()])]);
     }
 
     /**
      * @Route("/tasks/create", name="task_create")
      */
-    public function createAction(Request $request, Task $task, EntityManagerInterface $em)
+    public function createAction(Request $request, EntityManagerInterface $em)
     {
+        $task = new Task();
         $form = $this->createForm(TaskType::class, $task);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $task->setCreatedAt(new DateTime())
+            $task->setAuthor($this->getUser())
+                ->setCreatedAt(new DateTime())
                 ->toggle(\false);
 
             $em->persist($task);

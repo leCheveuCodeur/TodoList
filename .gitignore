@@ -32,3 +32,5 @@
 ###< symfony/framework-bundle ###
 
 Audit.md
+.vscode/
+Makefile
