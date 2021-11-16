@@ -33,8 +33,12 @@
 		<!-- Page Content -->
 		<div class="container">
 			<div class="d-grid gap-2 d-md-flex justify-content-md-between justify-content-center">
-				<a href="{{ path('user_create') }}" class="btn btn-primary">Créer un utilisateur</a>
-
+				<div class='d-flex gap-1'>
+					<a href="{{ path('user_create') }}" class="btn btn-primary">Créer un utilisateur</a>
+					{% if is_granted('ROLE_ADMIN') %}
+						<a href="{{ path('user_list') }}" class="float-end btn btn-secondary">Administration</a>
+					{% endif %}
+				</div>
 				{% if app.user %}
 					<a href="{{ path('logout') }}" class="float-end btn btn-danger">Se déconnecter</a>
 				{% endif %}
