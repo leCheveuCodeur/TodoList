@@ -1,17 +1,19 @@
 {% macro taskModel(task) %}
 	<div class="col-lg-4">
 		<div class="thumbnail">
-			<div class="caption">
-				<h4 class="pull-right">
-					{% if task.isDone %}
-						<span class="glyphicon glyphicon-ok"></span>
-					{% else %}
-						<span class="glyphicon glyphicon-remove"></span>
-					{% endif %}
-				</h4>
-				<h4>
-					<a href="{{ path('task_edit', {'id' : task.id }) }}">{{ task.title }}</a>
-				</h4>
+			<div class="card p-1 my-2">
+				<div>
+					<h4 class="d-block me-1 float-end">
+						{% if task.isDone %}
+							<i class="bi bi-check-lg"></i>
+						{% else %}
+							<i class="bi bi-x-lg"></i>
+						{% endif %}
+					</h4>
+					<h4 class='overflow-hidden'>
+						<a href="{{ path('task_edit', {'id' : task.id }) }}">{{ task.title }}</a>
+					</h4>
+				</div>
 				<p>{{ task.content }}</p>
 			</div>
 			<div class="gap-2 d-flex flex-row flex-wrap justify-content-center justify-content-sm-end">
