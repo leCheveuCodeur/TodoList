@@ -34,3 +34,8 @@
 Audit.md
 .vscode/
 Makefile
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
