@@ -34,7 +34,9 @@
 		<div class="container">
 			<div class="d-grid gap-2 d-md-flex justify-content-md-between justify-content-center">
 				<div class='d-flex gap-1'>
-					<a href="{{ path('user_create') }}" class="btn btn-primary">Créer un utilisateur</a>
+					{% if not app.user %}
+						<a href="{{ path('user_create') }}" class="btn btn-primary">Créer un utilisateur</a>
+					{% endif %}
 					{% if is_granted('ROLE_ADMIN') %}
 						<a href="{{ path('user_list') }}" class="float-end btn btn-secondary">Administration</a>
 					{% endif %}
