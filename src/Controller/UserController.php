@@ -17,7 +17,7 @@ class UserController extends AbstractController
 {
     /**
      * @Route("/users", name="user_list")
-     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas l'authorisation voulu.")
      */
     public function listAction(UserRepository $userRepository)
     {
@@ -51,6 +51,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/users/{id}/edit", name="user_edit")
+     * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas l'authorisation voulu.")
      */
     public function editAction(User $user, Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $em)
     {
