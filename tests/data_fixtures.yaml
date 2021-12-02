@@ -1,0 +1,24 @@
+App\Entity\User:
+  admin:
+    username: "admin"
+    email: "test@test.fr"
+    roles: ["ROLE_USER"]
+    password: "test123"
+  user_1:
+    username: "user_1"
+    email: "user_1@test.fr"
+    roles: "[ROLE_USER]"
+    password: "test123"
+  user_2:
+    username: "user_2"
+    email: "user_2@test.fr"
+    roles: "[ROLE_USER]"
+    password: "test123"
+
+App\Entity\Task:
+  task_1:
+    createdAt: <(new \DateTime())>
+    title: "test"
+    content: "test"
+    author: "@user_1"
+    toggle: false

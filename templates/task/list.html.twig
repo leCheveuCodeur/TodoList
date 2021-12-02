@@ -18,7 +18,7 @@
 			</div>
 			<div class="gap-2 d-flex flex-row flex-wrap justify-content-center justify-content-sm-end">
 				<form action="{{ path('task_toggle', {'id' : task.id }) }}">
-					<button class="btn btn-success btn-sm">
+					<button id="task_{{ task.id }}" class="btn btn-success btn-sm">
 						{% if not task.isDone %}Marquer comme faite{% else %}Marquer non terminée
 						{% endif %}
 					</button>
