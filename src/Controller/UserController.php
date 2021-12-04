@@ -17,7 +17,6 @@ class UserController extends AbstractController
 {
     /**
      * @Route("/users", name="user_list")
-     * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas l'authorisation voulu.")
      */
     public function listAction(UserRepository $userRepository)
     {
@@ -51,7 +50,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/users/{id}/edit", name="user_edit")
-     * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas l'authorisation voulu.")
+     * @IsGranted("CAN_ACCESS", subject="user", message="Vous n'êtes pas authorisé à accèder à cette page")
      */
     public function editAction(User $user, Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $em)
     {
@@ -60,8 +59,10 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $password = $passwordHasher->hashPassword($user, $user->getPassword());
-            $user->setPassword($password);
+            if ($this->isGranted('CAN_EDIT', $user)) {
+                $password = $passwordHasher->hashPassword($user, $user->getPassword());
+                $user->setPassword($password);
+            }
 
             $em->flush();
 
