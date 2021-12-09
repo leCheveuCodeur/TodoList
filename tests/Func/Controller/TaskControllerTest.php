@@ -57,6 +57,8 @@ class TaskControllerTest extends CustomWebTestCase
         $this->client->loginUser($user);
         $this->client->request('GET', '/tasks/1/delete');
         $this->assertResponseStatusCodeSame(Response::HTTP_FORBIDDEN);
+        $this->client->request('GET', '/tasks/2/delete');
+        $this->assertResponseStatusCodeSame(Response::HTTP_FORBIDDEN);
     }
 
     // test the possibility to delete a Task that belongs to us - POSSIBLE
@@ -68,6 +70,16 @@ class TaskControllerTest extends CustomWebTestCase
         $this->client->followRedirect();
         $this->assertSelectorExists('div[class*="alert alert-success"]');
         $this->assertSelectorNotExists('a[href*="/tasks/1/edit"]');
+    }
+
+    public function testDeletingAnonymousTaskWithRights()
+    {
+        $user = $this->fixtures['admin'];
+        $this->client->loginUser($user);
+        $this->client->request('GET', '/tasks/2/delete');
+        $this->client->followRedirect();
+        $this->assertSelectorExists('div[class*="alert alert-success"]');
+        $this->assertSelectorNotExists('a[href*="/tasks/2/edit"]');
     }
 
     // test creation of a Task - POSSIBLE
@@ -82,7 +94,7 @@ class TaskControllerTest extends CustomWebTestCase
         ]);
         $this->client->followRedirect();
         $this->assertSelectorExists('div[class*="alert alert-success"]');
-        $this->assertSelectorTextContains('a[href*="/tasks/2/edit"]', 'super titre à rallonnnnnnnnggggggggggge');
+        $this->assertSelectorTextContains('a[href*="/tasks/3/edit"]', 'super titre à rallonnnnnnnnggggggggggge');
     }
 
 

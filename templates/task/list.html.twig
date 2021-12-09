@@ -15,6 +15,7 @@
 					</h4>
 				</div>
 				<p>{{ task.content }}</p>
+				<p class="text-end text-secondary me-2">{{ task.author ? task.author.username : 'Anonyme' }}</p>
 			</div>
 			<div class="gap-2 d-flex flex-row flex-wrap justify-content-center justify-content-sm-end">
 				<form action="{{ path('task_toggle', {'id' : task.id }) }}">
@@ -23,7 +24,7 @@
 						{% endif %}
 					</button>
 				</form>
-				{% if task.author is same as app.user %}
+				{% if (task.author is same as app.user) or (is_granted('ROLE_ADMIN') and task.author is null) %}
 					<form action="{{ path('task_delete', {'id' : task.id }) }}">
 						<button class="btn btn-danger btn-sm">Supprimer</button>
 					</form>

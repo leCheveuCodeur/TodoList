@@ -29,7 +29,7 @@ class TaskVoter extends Voter
         switch ($attribute) {
             case 'CAN_DELETE':
                 /** @var Task $subject */
-                return $subject->getAuthor() === $user;
+                return ($subject->getAuthor() === $user) || ($subject->getAuthor() === null && in_array('ROLE_ADMIN', $user->getRoles()));
         }
 
         return false;

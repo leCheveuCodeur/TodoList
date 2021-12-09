@@ -24,6 +24,7 @@ class TaskRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('t')
         ->where('t.author != :user')
+        ->orWhere('t.author is null')
         ->setParameter('user',$user)
         ->getQuery()->getResult();
     }

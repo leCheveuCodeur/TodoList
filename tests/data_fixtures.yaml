@@ -25,3 +25,9 @@ App\Entity\Task:
     content: "test"
     author: "@user_1"
     toggle: false
+  task_2:
+    createdAt: <(new \DateTime())>
+    title: "test anonyme"
+    content: "test à rallonge"
+    author: null
+    toggle: false
