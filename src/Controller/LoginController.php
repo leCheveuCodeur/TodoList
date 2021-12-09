@@ -28,6 +28,7 @@ class LoginController extends AbstractController
 
     /**
      * @Route("/logout", name="logout")
+     * @codeCoverageIgnore
      */
     public function logout(): void
     {

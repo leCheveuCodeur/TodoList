@@ -2,22 +2,11 @@
 
 namespace App\Tests\Func\Controller;
 
-use Symfony\Bundle\FrameworkBundle\KernelBrowser;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use App\Tests\Utils\CustomWebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-class TaskControllerTest extends WebTestCase
+class TaskControllerTest extends CustomWebTestCase
 {
-    private KernelBrowser $client;
-    private $fixtures;
-
-    public function setUp(): void
-    {
-        $this->client = static::createClient();
-        $this->fixtures = static::getContainer()->get('fidry_alice_data_fixtures.loader.doctrine');
-        $this->fixtures = $this->fixtures->load(['tests/data_fixtures.yaml']);
-    }
-
     public function taskUri()
     {
         return [
@@ -52,12 +41,10 @@ class TaskControllerTest extends WebTestCase
         $user = $this->fixtures['user_2'];
         $this->client->loginUser($user);
         $this->client->request('GET', '/tasks/1/edit');
-        $this->assertResponseIsSuccessful();
         $this->client->submitForm('Modifier', [
             'task[title]' => 'super titre à rallonnnnnnnnggggggggggge',
             'task[content]' => 'contenu super court'
         ]);
-        $this->assertResponseRedirects();
         $this->client->followRedirect();
         $this->assertSelectorExists('div[class*="alert alert-success"]');
         $this->assertSelectorTextContains('a[href*="/tasks/1/edit"]', 'super titre à rallonnnnnnnnggggggggggge');
@@ -78,7 +65,6 @@ class TaskControllerTest extends WebTestCase
         $user = $this->fixtures['user_1'];
         $this->client->loginUser($user);
         $this->client->request('GET', '/tasks/1/delete');
-        $this->assertResponseRedirects();
         $this->client->followRedirect();
         $this->assertSelectorExists('div[class*="alert alert-success"]');
         $this->assertSelectorNotExists('a[href*="/tasks/1/edit"]');
@@ -90,12 +76,10 @@ class TaskControllerTest extends WebTestCase
         $user = $this->fixtures['user_1'];
         $this->client->loginUser($user);
         $this->client->request('GET', '/tasks/create');
-        $this->assertResponseIsSuccessful();
         $this->client->submitForm('Ajouter', [
             'task[title]' => 'super titre à rallonnnnnnnnggggggggggge',
             'task[content]' => 'contenu super court'
         ]);
-        $this->assertResponseRedirects();
         $this->client->followRedirect();
         $this->assertSelectorExists('div[class*="alert alert-success"]');
         $this->assertSelectorTextContains('a[href*="/tasks/2/edit"]', 'super titre à rallonnnnnnnnggggggggggge');
@@ -119,9 +103,7 @@ class TaskControllerTest extends WebTestCase
         $user = $this->fixtures[$user_test];
         $this->client->loginUser($user);
         $this->client->request('GET', '/tasks');
-        $this->assertResponseIsSuccessful();
         $this->client->submitForm('task_1');
-        $this->assertResponseRedirects();
         $this->client->followRedirect();
         $this->assertSelectorExists('div[class*="alert alert-success"]');
         $this->assertSelectorExists('div[class*="alert alert-success"]');

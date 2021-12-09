@@ -2,18 +2,21 @@ App\Entity\User:
   admin:
     username: "admin"
     email: "test@test.fr"
-    roles: ["ROLE_USER"]
-    password: "test123"
+    roles: ["ROLE_ADMIN"]
+    password: "test"
+    tasks: []
   user_1:
     username: "user_1"
     email: "user_1@test.fr"
     roles: "[ROLE_USER]"
     password: "test123"
+    tasks: ["@task_1"]
   user_2:
     username: "user_2"
     email: "user_2@test.fr"
     roles: "[ROLE_USER]"
     password: "test123"
+    tasks: []
 
 App\Entity\Task:
   task_1:

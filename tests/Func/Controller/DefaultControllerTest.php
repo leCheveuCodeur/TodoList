@@ -2,21 +2,10 @@
 
 namespace App\Tests\Func\Controller;
 
-use Symfony\Bundle\FrameworkBundle\KernelBrowser;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use App\Tests\Utils\CustomWebTestCase;
 
-class DefaultControllerTest extends WebTestCase
+class DefaultControllerTest extends CustomWebTestCase
 {
-    private KernelBrowser $client;
-    private $fixtures;
-
-    public function setUp(): void
-    {
-        $this->client = static::createClient();
-        $this->fixtures = static::getContainer()->get('fidry_alice_data_fixtures.loader.doctrine');
-        $this->fixtures = $this->fixtures->load(['tests/data_fixtures.yaml']);
-    }
-
     public function featuresForAuthenticatedUser()
     {
         return [

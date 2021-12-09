@@ -38,40 +38,37 @@ class AppFixtures extends Fixture
         $manager->flush();
 
         //Fakes Datas
-        if ($_ENV['APP_ENV'] === 'dev') {
+        for ($u = 0; $u < 3; $u++) {
+            $user = new User;
+            $user->setUsername('test' . ($u + 1))
+                ->setEmail('test' . ($u + 1) . '@test.com')
+                ->setPassword($this->passwordHasher->hashPassword($user, 'test'))
+                ->setRoles([User::ROLE_USER]);
 
-            for ($u = 0; $u < 3; $u++) {
-                $user = new User;
-                $user->setUsername('test' . ($u + 1))
-                    ->setEmail('test' . ($u + 1) . '@test.com')
-                    ->setPassword($this->passwordHasher->hashPassword($user, 'test'))
-                    ->setRoles([User::ROLE_USER]);
-
-                $manager->persist($user);
-            }
-            $manager->flush();
-
-            for ($t = 0; $t < 20; $t++) {
-                $task = new Task;
-                $task->setAuthor($this->userRepository->find(\mt_rand(1, 4)))
-                    ->setTitle($faker->sentence())
-                    ->setContent($faker->text())
-                    ->setCreatedAt(new DateTime())
-                    ->toggle((bool) \random_int(0, 1));
-
-                $manager->persist($task);
-            }
-
-            for ($t = 0; $t < 3; $t++) {
-                $task = new Task;
-                $task->setTitle($faker->sentence())
-                    ->setContent($faker->text())
-                    ->setCreatedAt(new DateTime())
-                    ->toggle((bool) \random_int(0, 1));
-
-                $manager->persist($task);
-            }
-            $manager->flush();
+            $manager->persist($user);
         }
+        $manager->flush();
+
+        for ($t = 0; $t < 20; $t++) {
+            $task = new Task;
+            $task->setAuthor($this->userRepository->find(\mt_rand(1, 4)))
+                ->setTitle($faker->sentence())
+                ->setContent($faker->text())
+                ->setCreatedAt(new DateTime())
+                ->toggle((bool) \random_int(0, 1));
+
+            $manager->persist($task);
+        }
+
+        for ($t = 0; $t < 3; $t++) {
+            $task = new Task;
+            $task->setTitle($faker->sentence())
+                ->setContent($faker->text())
+                ->setCreatedAt(new DateTime())
+                ->toggle((bool) \random_int(0, 1));
+
+            $manager->persist($task);
+        }
+        $manager->flush();
     }
 }
