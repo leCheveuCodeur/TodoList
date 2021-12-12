@@ -1,4 +1,4 @@
-# ToDoList [![Codacy Badge](https://app.codacy.com/project/badge/Grade/20872575b2934283ba8773a14a334d63)](https://www.codacy.com/gh/leCheveuCodeur/TodoList/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=leCheveuCodeur/TodoList&amp;utm_campaign=Badge_Grade) [![Maintainability](https://api.codeclimate.com/v1/badges/2d02201b1d9fa991db44/maintainability)](https://codeclimate.com/github/leCheveuCodeur/TodoList/maintainability) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/20872575b2934283ba8773a14a334d63)](https://www.codacy.com/gh/leCheveuCodeur/TodoList/dashboard?utm_source=github.com&utm_medium=referral&utm_content=leCheveuCodeur/TodoList&utm_campaign=Badge_Coverage)
+# TodoList [![Codacy Badge](https://app.codacy.com/project/badge/Grade/20872575b2934283ba8773a14a334d63)](https://www.codacy.com/gh/leCheveuCodeur/TodoList/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=leCheveuCodeur/TodoList&amp;utm_campaign=Badge_Grade) [![Maintainability](https://api.codeclimate.com/v1/badges/2d02201b1d9fa991db44/maintainability)](https://codeclimate.com/github/leCheveuCodeur/TodoList/maintainability) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/20872575b2934283ba8773a14a334d63)](https://www.codacy.com/gh/leCheveuCodeur/TodoList/dashboard?utm_source=github.com&utm_medium=referral&utm_content=leCheveuCodeur/TodoList&utm_campaign=Badge_Coverage)
 
 ## Description
 
@@ -12,7 +12,7 @@ The last objective was to perform a **quality and performance audit of the proje
 
 ## How it work
 
-![ToDoList](ToDoList.gif)
+![TodoList](TodoList.gif)
 
 ## Build with
 
