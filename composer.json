@@ -59,7 +59,7 @@
 			"require": "5.4.*"
 		}
 	},
-	"minimum-stability": "dev",
+	"minimum-stability": "stable",
 	"scripts": {
 		"auto-scripts": {
 			"cache:clear": "symfony-cmd",
