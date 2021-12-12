@@ -31,10 +31,7 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
-Audit.md
 .vscode/
-Makefile
-blackfire.msi
 
 ###> phpunit/phpunit ###
 /phpunit.xml
