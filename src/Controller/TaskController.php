@@ -60,6 +60,7 @@ class TaskController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $task->setUpdatedAt(new DateTime());
             $em->flush();
 
             $this->addFlash('success', 'La tâche a bien été modifiée.');

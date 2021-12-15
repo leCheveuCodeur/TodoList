@@ -80,7 +80,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @deprecated since Symfony 5.3
-     */""
+     */
     public function getUsername(): string
     {
         return (string) $this->username;
