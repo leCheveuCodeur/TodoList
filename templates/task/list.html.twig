@@ -1,5 +1,5 @@
 {% macro taskModel(task) %}
-	{% cache "task_list;"~ task.id ~";"~ (task.updatedAt is not empty ? (task.updatedAt|format_datetime(pattern="Y-m-d-H-i-s")): "0") %}
+	{% cache "task_list;"~ task.id ~";"~ (task.updatedAt is not empty ? (task.updatedAt.timestamp): "0") %}
 	<div class="col-lg-4">
 		<div class="thumbnail">
 			<div class="card p-1 my-2">
